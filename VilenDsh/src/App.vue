@@ -10,7 +10,16 @@
     // 6 
     num: 5,
     // 7 
-    arr: ['x', 'y', 'z']
+    arr: ['x', 'y', 'z'],
+    // 8
+    obj: {x: 1, y: 2, z: 4},
+    // 9 
+    methods: {
+    show: function() {
+    const currentDate = new Date().toLocaleDateString();
+    alert(currentDate);
+  }
+}
 	}
 }
 }
@@ -35,6 +44,12 @@
       <p> {{ arr[0] }}</p>
       <p> {{ arr[1] }}</p>
       <p> {{ arr[2] }}</p>
+
+      <h1>8 задание</h1>
+      {{ obj.x + obj.y + obj.z }}
+
+      <h1>9 задание</h1>
+      <button @click="show">Показать дату</button>
     </div>
 
     
