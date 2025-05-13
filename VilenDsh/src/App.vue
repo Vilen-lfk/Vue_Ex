@@ -7,6 +7,10 @@
     // 5
     text: 'page',
 		href: 'page.html',
+    // 6 
+    num: 5,
+    // 7 
+    arr: ['x', 'y', 'z']
 	}
 }
 }
@@ -23,7 +27,17 @@
     </div>
       <h1>5 задание</h1>
       <a href="page.html">page</a>
+
+      <h1>6 задание</h1>
+      {{ num * num }}
+
+      <h1>7 задание</h1>
+      <p> {{ arr[0] }}</p>
+      <p> {{ arr[1] }}</p>
+      <p> {{ arr[2] }}</p>
     </div>
+
+    
 </template>
 
 <style scoped>
