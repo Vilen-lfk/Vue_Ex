@@ -1,13 +1,29 @@
 <script>
 	export default {
-	name: 'App',
+	data() {
+	return {
+		name: 'john',
+		surn: 'smit',
+    // 5
+    text: 'page',
+		href: 'page.html',
+	}
+}
 }
 </script>
 <template>
 	<div>
 		Hello World
     <p> My name is Vilen</p>
-	</div>
+
+    <div>
+      <h1>4 задание</h1>
+      {{ name }}
+      {{ surn }}
+    </div>
+      <h1>5 задание</h1>
+      <a href="page.html">page</a>
+    </div>
 </template>
 
 <style scoped>
