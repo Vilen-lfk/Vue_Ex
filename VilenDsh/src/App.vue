@@ -16,6 +16,8 @@
     // 11
     num1: 1,
     num2: 2,
+    // 12
+    num3: 4,
 	}
 },
     // 9 - 10
@@ -27,6 +29,18 @@
     sum: function(){
       let sum = this.num1 + this.num2;
       console.log(sum)
+    },
+    //12
+    show1: function() {
+		  let text = this.cape(this.text);
+		console.log(text);
+	},
+	  cape: function(str) {
+		  return str[0].toUpperCase() + str.slice(1);//делает первую букву заглавную
+	},
+    kv: function(num3){
+      const proisv = this.num3 * this.num3; 
+      alert(proisv);
     }
 }
 }
@@ -63,6 +77,12 @@
 
       <h1> 11</h1>
       <button v-on:click="sum">сумма чисел num1 и num2</button>
+
+      <h1> 12</h1>
+      {{ show1() }}
+
+      <h1> 13</h1>
+      <button @click="kv('proisv')">Квадрат числа num3</button>
     </div>
 
     
