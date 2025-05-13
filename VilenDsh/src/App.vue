@@ -13,14 +13,21 @@
     arr: ['x', 'y', 'z'],
     // 8
     obj: {x: 1, y: 2, z: 4},
-    // 9 
-    methods: {
-    show: function() {
-    const currentDate = new Date().toLocaleDateString();
-    alert(currentDate);
-  }
-}
+    // 11
+    num1: 1,
+    num2: 2,
 	}
+},
+    // 9 - 10
+ methods: {
+    show: function() {
+      const currentDate = new Date().toLocaleDateString();
+    alert(currentDate);
+  },
+    sum: function(){
+      let sum = this.num1 + this.num2;
+      console.log(sum)
+    }
 }
 }
 </script>
@@ -50,6 +57,12 @@
 
       <h1>9 задание</h1>
       <button @click="show">Показать дату</button>
+
+      <h1>10 задание</h1>
+      <button v-on:click="show">text</button>
+
+      <h1> 11</h1>
+      <button v-on:click="sum">сумма чисел num1 и num2</button>
     </div>
 
     
