@@ -8,6 +8,10 @@
     visible: false,
     //20
     visible1:true,
+    //21
+    visible2:true,
+    //22
+    isAdmin: false,
     
 }
 },
@@ -20,7 +24,10 @@ methods: {
 	},
     toggle: function() {
 	this.visible1 = !this.visible1;
-},
+    },
+    toggle1: function() {
+	this.visible2 = !this.visible2;
+}
 }
 }
 
@@ -39,8 +46,13 @@ methods: {
     <h1>20</h1>
     <button @click="toggle">toggle</button>
 	<p v-if="visible1">text</p>
-
-       
+    <h1>21</h1>
+    <button @click="toggle1">
+		{{ visible2 ? 'hide' : 'show' }}
+	</button>
+    <h1>22</h1>
+    <p v-if="isAdmin">+++</p>
+	<p v-else>---</p>
     </div>   
 </template>
 
