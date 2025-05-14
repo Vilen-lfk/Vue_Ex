@@ -12,6 +12,10 @@
     visible2:true,
     //22
     isAdmin: false,
+    //23
+    num: 2,
+    //24
+    age: 25,
     
 }
 },
@@ -53,6 +57,14 @@ methods: {
     <h1>22</h1>
     <p v-if="isAdmin">+++</p>
 	<p v-else>---</p>
+    <h1>23</h1>
+    <p v-if="num === 1">one</p>
+	<p v-if="num === 2">two</p>
+	<p v-if="num === 3">three</p>
+    <h1>24</h1>
+    <p v-if="age < 18">подросток</p>
+	<p v-else-if="19 >= age < 25">молодой человек</p>
+	<p v-else-if="26 >= age <= 100">мужчина</p>
     </div>   
 </template>
 
