@@ -23,7 +23,11 @@
     //15
     cost: 130,
     amount: 3,
-	}
+    //17
+    visible: true,
+    visible1: false,
+     //А вот если visible поставить в значение false, то абзац будет скрыт:
+  }
 },
     // 9 - 10
  methods: {
@@ -50,8 +54,15 @@
     change: function() {
 		this.text = 'Dasha';
 	},
+  //16
+    handleClick(event) {
+      event.preventDefault(); // Отменяем стандартное поведение ссылки
+      alert('Клик по ссылке обработан, но переход отменен');
+      // Здесь может быть ваша логика обработки клика
+    }
     
 },
+//15
 computed: {
         price() {
           return this.cost * this.amount;
@@ -109,6 +120,13 @@ computed: {
     <p>Количество: {{ amount }}</p>
     <p>Общая стоимость: {{ price }}</p> <!-- Вот здесь выводится price -->
   </div>
+    <h1>16</h1>
+     <a href="https://example.com" @click="handleClick">
+      Нажми меня (перехода не будет)
+    </a>
+    <h1>17</h1>
+    <p v-if="visible">text</p>
+    <p v-if="visible1">text</p>
     </div>
     
     
