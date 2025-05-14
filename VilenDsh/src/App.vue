@@ -18,6 +18,11 @@
     num2: 2,
     // 12
     num3: 4,
+    //14
+    text: 'VIlen',
+    //15
+    cost: 130,
+    amount: 3,
 	}
 },
     // 9 - 10
@@ -41,9 +46,21 @@
     kv: function(num3){
       const proisv = this.num3 * this.num3; 
       alert(proisv);
-    }
+    },
+    change: function() {
+		this.text = 'Dasha';
+	},
+    
+},
+computed: {
+        price() {
+          return this.cost * this.amount;
+        }
+  }
 }
-}
+  
+
+
 </script>
 <template>
 	<div>
@@ -83,8 +100,17 @@
 
       <h1> 13</h1>
       <button @click="kv('proisv')">Квадрат числа num3</button>
+      <h1>14</h1>
+      {{ text }}
+	  <button @click="change">text</button>   
+    <div>
+    <h2>15 задание</h2>
+    <p>Цена за единицу: {{ cost }}</p>
+    <p>Количество: {{ amount }}</p>
+    <p>Общая стоимость: {{ price }}</p> <!-- Вот здесь выводится price -->
+  </div>
     </div>
-
+    
     
 </template>
 
