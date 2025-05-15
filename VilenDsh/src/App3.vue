@@ -40,6 +40,13 @@
 		items: ['a', 'b', 'c', 'd', 'e'],
         //54
         items1: ['a', 'b', 'c', 'd', 'e'],
+        //55
+        users: [
+                    { id: 1, name: 'name1', salary: 100, age: 30 },
+                    { id: 2, name: 'name2', salary: 200, age: 40 },
+                    { id: 3, name: 'name3', salary: 300, age: 50 }
+                ],
+                
         }       
     },
 methods: {
@@ -53,11 +60,18 @@ methods: {
 		this.items.push(this.newItem);
 	}
 },
+//54
 methods: {
 	removeItem: function(index) {
 		this.items1.splice(index, 1);
 	}
-}
+},
+//55
+methods: {
+    removeUser(id) {
+      this.users = this.users.filter(user => user.id !== id)
+    }
+  },
 }
 
 
@@ -150,7 +164,30 @@ methods: {
                     <button @click="removeItem(index)">remove</button>
                 </li>
             </ul>
-            <h1></h1>
+
+            <h1>55</h1>
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Имя</th>
+                    <th>Зарплата</th>
+                    <th>Возраст</th>
+                    <th>Действия</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="user in users" :key="user.id">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.salary }}$</td>
+                    <td>{{ user.age }} лет</td>
+                    <td>
+                    <button @click="removeUser(user.id)">Удалить</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
             <h1></h1>
             </div>
         </div>
