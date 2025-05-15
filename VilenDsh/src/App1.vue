@@ -104,12 +104,7 @@ methods: {
 	</p>
 
   <h1>30</h1>
-   <template v-for="item1 in item1" :key = "item1">
-      <div>
-        <p>{{ item1 }}</p>
-        <p class="divider"></p>
-      </div>
-    </template>
+  
   </div>   
 </template>
 
