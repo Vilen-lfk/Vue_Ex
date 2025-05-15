@@ -20,6 +20,14 @@
     items: [1, 2, 3, 4, 5],
     //28
     arr: ['x', 'y', 'z'],
+    //29
+    obj: {
+            user1: '100$',
+            user2: '200$',
+            user3: '300$',
+          },
+    //30
+    item1: [1,2,3],      
     
 }
 },
@@ -73,8 +81,8 @@ methods: {
 
     <h1>24</h1>
     <p v-if="age < 18">подросток</p>
-	<p v-else-if="19 >= age < 25">молодой человек</p>
-	<p v-else-if="26 >= age <= 100">мужчина</p>
+    <p v-else-if="age >= 18 && age < 25">молодой человек</p>
+    <p v-else>мужчина</p>
 
   <h1>27</h1>
   <p v-for="item in items" :key="item">{{ item }}</p>
@@ -85,6 +93,23 @@ methods: {
    <li v-for="(elem, key) in arr" :key="key">
       {{ key }}
     </li>
+
+  <h1>29</h1>
+    <p v-for="(elem, key, index) in obj" :key = "key">
+		{{ key }}
+    -
+		{{ elem }}
+    -
+    {{ index }}
+	</p>
+
+  <h1>30</h1>
+   <template v-for="item1 in item1" :key = "item1">
+      <div>
+        <p>{{ item1 }}</p>
+        <p class="divider"></p>
+      </div>
+    </template>
   </div>   
 </template>
 
