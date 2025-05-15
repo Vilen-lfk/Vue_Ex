@@ -29,7 +29,19 @@
          //44
          num: 0,
          res: 0,
-    }
+         //45
+         txt: '',
+         //46
+         isChecked: false, // Начальное состояние checkbox
+         //47
+         knownLanguages: [], // Массив для хранения выбранных языков
+          languages: [      
+            { id: 'eng', name: 'Английский' },
+            { id: 'fra', name: 'Французский' },
+            { id: 'deu', name: 'Немецкий' },
+            { id: 'spa', name: 'Испанский' }
+          ]
+        }
 },
 methods: {
 	add: function() {
@@ -117,7 +129,52 @@ methods: {
         <p>{{ res }}</p>
         <input v-model="num">
         <button v-on:click="calc">найди корень числа</button>
-      
+        
+        <h1>45</h1>
+          <textarea v-model="txt"></textarea>
+          <p>{{ txt }}</p>
+
+        <h1>46</h1>
+        <label>
+          <input type="checkbox" v-model="isChecked">
+          Показать/скрыть абзац
+        </label>
+        
+        <p v-if="isChecked">Этот абзац виден только когда checkbox отмечен</p> 
+        
+        <h1>47</h1>
+          <div>
+            <h3>Какие языки вы знаете?</h3>
+            
+            <label>
+              <input type="checkbox" v-model="knownLanguages" value="eng">
+              Английский
+            </label>
+            <br>
+            
+            <label>
+              <input type="checkbox" v-model="knownLanguages" value="fra">
+              Французский
+            </label>
+            <br>
+            
+            <label>
+              <input type="checkbox" v-model="knownLanguages" value="deu">
+              Немецкий
+            </label>
+            <br>
+            
+            <label>
+              <input type="checkbox" v-model="knownLanguages" value="spa">
+              Испанский
+            </label>
+            
+            <p>Выбранные языки: {{ knownLanguages }}</p>
+          </div>
+        <h1></h1>
+        <h1></h1>
+        <h1></h1>
+        <h1></h1>
         </div>
     </template>
 
