@@ -16,6 +16,10 @@
     num: 2,
     //24
     age: 25,
+    //27
+    items: [1, 2, 3, 4, 5],
+    //28
+    arr: ['x', 'y', 'z'],
     
 }
 },
@@ -43,29 +47,45 @@ methods: {
     <H1>18</H1>
     <p v-if="!hidden">text</p>
     <p v-if="hidden">text</p>
+
     <h1>19</h1>
     <button @click="hide">открыть</button>
      <button @click="hide1">скрыть</button>
 	<p v-if="visible">text</p>
+
     <h1>20</h1>
     <button @click="toggle">toggle</button>
 	<p v-if="visible1">text</p>
+
     <h1>21</h1>
     <button @click="toggle1">
 		{{ visible2 ? 'hide' : 'show' }}
 	</button>
+
     <h1>22</h1>
     <p v-if="isAdmin">+++</p>
 	<p v-else>---</p>
+
     <h1>23</h1>
     <p v-if="num === 1">one</p>
 	<p v-if="num === 2">two</p>
 	<p v-if="num === 3">three</p>
+
     <h1>24</h1>
     <p v-if="age < 18">подросток</p>
 	<p v-else-if="19 >= age < 25">молодой человек</p>
 	<p v-else-if="26 >= age <= 100">мужчина</p>
-    </div>   
+
+  <h1>27</h1>
+  <p v-for="item in items" :key="item">{{ item }}</p>
+  -----------
+  <p v-for="item in items" :key="item">{{ item*item }}</p>
+
+  <h1>28</h1>
+   <li v-for="(elem, key) in arr" :key="key">
+      {{ key }}
+    </li>
+  </div>   
 </template>
 
 <style scoped>
