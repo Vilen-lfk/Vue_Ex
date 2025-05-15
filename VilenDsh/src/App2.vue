@@ -10,51 +10,77 @@
       //33
         items: [1, -2, 3, -4, 5 , 6],
       //35
-        arr: ['a', 'b', 'c'],  
+        arr: ['a', 'b', 'c'],
+        //37
+        cssClasses: 'text-bold text-red' ,// Пример CSS классов 
+        //38
+        obj: {
+            done: true,
+            selected: true,
+        
+      },
+         message: "Изначальный текст"
     }
 },
 methods: {
 	add: function() {
 		this.arr.push('xxx');
 	}
-}
+},
+methods: {
+    changeText() {
+      this.message = "Новый текст после клика";
+      this.obj.done = !this.obj.done;
+      this.obj.selected = !this.obj.selected;
+    }
+  },
 }
 
 
 
 </script>
-<template>
-	<div>
-        <h1>31</h1>
-         <ul>
-        <li v-for="ss in hrefs" :key="ss.href">
-        <a :href="ss.href">{{ ss.text }}</a>
-    </li>
-  </ul>
-  <h1>32</h1>
-    <p v-for="num in 20" :key="num">		
-        {{ num }}
-	</p>
+    <template>
+        <div>
+            <h1>31</h1>
+            <ul>
+            <li v-for="ss in hrefs" :key="ss.href">
+            <a :href="ss.href">{{ ss.text }}</a>
+        </li>
+    </ul>
+    <h1>32</h1>
+        <p v-for="num in 20" :key="num">		
+            {{ num }}
+        </p>
 
-    <h1>33</h1>
-    <ul>
-		<template v-for="elem in items">
-			<li v-if="elem > 0" :key="elem.items">
-				{{ elem }}
-			</li>
-		</template>
-	</ul>
+        <h1>33</h1>
+        <ul>
+            <template v-for="elem in items">
+                <li v-if="elem > 0" :key="elem.items">
+                    {{ elem }}
+                </li>
+            </template>
+        </ul>
 
-    <h1>35</h1>
-	<p v-for="elem in arr" :key = "elem.arr">
-		{{ elem }}
-	</p>
-	<button @click="add">add</button>
+        <h1>35</h1>
+        <p v-for="elem in arr" :key = "elem.arr">
+            {{ elem }}
+        </p>
+        <button @click="add">add</button>
 
-    </div>
-</template>
+        <h1>37</h1>
+        <p :class="cssClasses">Этот абзац получит CSS классы из свойства cssClasses</p>   
+        
+        <H1>38</H1>
+        <p :class="obj">{{ message }}</p>
+        <button @click="changeText">Изменить текст и классы</button>
+        </div>
+    </template>
 
 <style scoped>
+p{
+    color: green;
+}
+
 header {
   line-height: 1.5;
 }
