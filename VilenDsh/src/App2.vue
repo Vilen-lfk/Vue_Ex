@@ -19,7 +19,16 @@
             selected: true,
         
       },
-         message: "Изначальный текст"
+        
+         message: "Изначальный текст",
+        styles: {
+          done: false,
+        }, 
+        //43
+         inputText: '', // Инициализируем пустую строку для хранения текста
+         //44
+         num: 0,
+         res: 0,
     }
 },
 methods: {
@@ -34,6 +43,18 @@ methods: {
       this.obj.selected = !this.obj.selected;
     }
   },
+//39  
+methods: {
+	setDone: function() {
+		this.styles.done = true;
+	}
+},
+//44 для кнопки
+methods: {
+	calc: function() {
+		this.res = this.num ** 2;
+	}
+},
 }
 
 
@@ -73,10 +94,37 @@ methods: {
         <H1>38</H1>
         <p :class="obj">{{ message }}</p>
         <button @click="changeText">Изменить текст и классы</button>
+
+        <h1>39</h1>
+        <p :class="styles">text</p>
+        <button @click="setDone">hide</button>
+        
+        <h1> 42</h1>
+        <p :style="{color: 'green', backgroundColor: 'yellow'}">
+        Зеленый текст на желтом фоне
+        </p>
+        -----------
+        <p :style="{fontWeight: 'bold', fontStyle: 'italic'}">
+          Жирный и курсивный текст
+        </p>
+
+        <h1>43</h1>
+         <input v-model="inputText" placeholder="Введите текст">
+        <p>{{ inputText }}</p>
+
+        <h1>44</h1>
+        
+        <p>{{ res }}</p>
+        <input v-model="num">
+        <button v-on:click="calc">найди корень числа</button>
+      
         </div>
     </template>
 
 <style scoped>
+p.done {
+	text-decoration: line-through;
+}
 p{
     color: green;
 }
