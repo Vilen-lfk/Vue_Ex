@@ -7,7 +7,16 @@
         {href: '2.html', text: 'text2'},
         {href: '3.html', text: 'text3'},
       ],
+      //33
+        items: [1, -2, 3, -4, 5 , 6],
+      //35
+        arr: ['a', 'b', 'c'],  
     }
+},
+methods: {
+	add: function() {
+		this.arr.push('xxx');
+	}
 }
 }
 
@@ -26,6 +35,22 @@
     <p v-for="num in 20" :key="num">		
         {{ num }}
 	</p>
+
+    <h1>33</h1>
+    <ul>
+		<template v-for="elem in items">
+			<li v-if="elem > 0" :key="elem.items">
+				{{ elem }}
+			</li>
+		</template>
+	</ul>
+
+    <h1>35</h1>
+	<p v-for="elem in arr" :key = "elem.arr">
+		{{ elem }}
+	</p>
+	<button @click="add">add</button>
+
     </div>
 </template>
 
