@@ -35,6 +35,11 @@
         //52
         inputText: '',
         displayText: '',
+        //53
+        newItem: '',
+		items: ['a', 'b', 'c', 'd', 'e'],
+        //54
+        items1: ['a', 'b', 'c', 'd', 'e'],
         }       
     },
 methods: {
@@ -42,7 +47,17 @@ methods: {
       this.displayText = this.inputText; // Копируем текст при нажатии Enter
       this.inputText = ''; // Очищаем инпут (опционально)
     }
-  }
+  },
+methods: {
+	addItem: function() {
+		this.items.push(this.newItem);
+	}
+},
+methods: {
+	removeItem: function(index) {
+		this.items1.splice(index, 1);
+	}
+}
 }
 
 
@@ -118,8 +133,25 @@ methods: {
                 @keyup.enter="handleEnter"
                 placeholder="Напишите текст и нажмите Enter"
                 >
-                
                 <p v-if="displayText">{{ displayText }}</p>
+
+            <h1>53</h1>
+            <input v-model="newItem">
+	        <button @click="addItem">add</button>
+            <ul>
+                <li v-for="(item, index) in items" :key="index">
+                    {{ item }}
+                </li>
+            </ul>
+            <h1>54</h1>
+            <ul>
+                <li v-for="(item, index) in items1" :key="index">
+                    {{ item }}
+                    <button @click="removeItem(index)">remove</button>
+                </li>
+            </ul>
+            <h1></h1>
+            <h1></h1>
             </div>
         </div>
     </template>
