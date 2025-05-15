@@ -2,6 +2,7 @@
 	export default {
 	data() {
     return{
+        //48
         nativeLanguage: '', // Здесь будет храниться выбранный язык
         languages: [      
             { id: 'ru', name: 'Русский' },
@@ -9,6 +10,7 @@
             { id: 'es', name: 'Испанский' },
             { id: 'tt', name: 'Татарский' }
         ],
+        //49
         selectedCity: '', // Здесь будет храниться выбранный город
         cities: [     
             'Москва',
@@ -17,6 +19,7 @@
             'Екатеринбург',
             'Казань'
         ],
+        //50
         selectedDay: 'Понедельник', // Значение по умолчанию
         daysOfWeek: [
             'Понедельник',
@@ -26,9 +29,20 @@
             'Пятница',
             'Суббота',
             'Воскресенье'
-        ]
+        ],
+        //51
+        isInputDisabled: false, // заблокирован
+        //52
+        inputText: '',
+        displayText: '',
         }       
+    },
+methods: {
+    handleEnter() {
+      this.displayText = this.inputText; // Копируем текст при нажатии Enter
+      this.inputText = ''; // Очищаем инпут (опционально)
     }
+  }
 }
 
 
@@ -91,6 +105,22 @@
             </select>
             
             <p>Вы выбрали: {{ selectedDay }}</p>
+               
+            <h1>51</h1>
+            <input type="text" :disabled="isInputDisabled">
+            <button @click="isInputDisabled = !isInputDisabled">Переключить</button>
+            
+            <h1>52</h1>
+            <div>
+                <input 
+                type="text" 
+                v-model="inputText"
+                @keyup.enter="handleEnter"
+                placeholder="Напишите текст и нажмите Enter"
+                >
+                
+                <p v-if="displayText">{{ displayText }}</p>
+            </div>
         </div>
     </template>
 
