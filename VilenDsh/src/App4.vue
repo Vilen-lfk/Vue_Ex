@@ -17,6 +17,12 @@ export default {
 <template>
     <div>
         <User />
+        
+        <h1>59</h1>
+        <User names="john" surn="smit" />
+        
+        <h1>61</h1>
+        <User :name1="name1" :surn1="surn1" :price1="price1" />
     </div>
 </template>
 
