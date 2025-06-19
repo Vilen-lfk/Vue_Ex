@@ -1,17 +1,51 @@
 <script>
+import Employee from './components/Employee.vue'
 import User from './components/User.vue'
-
+import Child from './components/Child.vue'
 export default {
   components: {
-    User
+    User,
+    Employee,
+    Child // добавьте сюда Child, а не внутрь data()
   },
   data() {
     return {
-      
+      users: [
+        {
+          id: 1,
+          name: 'name1',
+          salary: 100,
+          age: 30,
+        },
+        {
+          id: 2,
+          name: 'name2',
+          salary: 200,
+          age: 40,
+        },
+        {
+          id: 3,
+          name: 'name3',
+          salary: 300,
+          age: 50,
+        },
+      ],
+      name1: 'John',     // добавьте, если используете в <User :name1="name1" />
+      surn1: 'Smith',
+      price1: 150
+    };
+  },
+  methods: {
+    firstAction() {
+      alert('Вызвана первая функция из родителя!');
+    },
+    secondAction() {
+      alert('Вызвана вторая функция из родителя!');
     }
   }
 }
 </script>
+
 
 
 <template>
@@ -23,6 +57,18 @@ export default {
         
         <h1>61</h1>
         <User :name1="name1" :surn1="surn1" :price1="price1" />
+
+        <h1>63</h1>
+        <Employee
+      v-for="user in users"
+      :key="user.id"
+      :name="user.name"
+      :salary="user.salary"
+      :age="user.age"
+    />
+
+    <h1>65</h1>
+    <Child @clickOne="firstAction" @clickTwo="secondAction" />
     </div>
 </template>
 
