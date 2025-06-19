@@ -1,80 +1,60 @@
 <script>
-import Employee from './components/Employee.vue'
-import User from './components/User.vue'
-import Child from './components/Child.vue'
-import Employe1 from './components/Employe1.vue'
-
+import Employee from './components/Employee.vue';
+import User from './components/User.vue';
+import Child from './components/Child.vue';
+import Employee1 from './components/Employe1.vue';
+import UserForm from './components/UserForm.vue'; // обязательно импортируйте
 
 export default {
   components: {
     User,
     Employee,
-    Employe1,
-    Child // добавьте сюда Child, а не внутрь data()
+    Employee1,
+    Child,
+    UserForm
   },
   data() {
     return {
-      users: [
-        {
-          id: 1,
-          name: 'name1',
-          salary: 100,
-          age: 30,
-        },
-        {
-          id: 2,
-          name: 'name2',
-          salary: 200,
-          age: 40,
-        },
-        {
-          id: 3,
-          name: 'name3',
-          salary: 300,
-          age: 50,
-        },
-      ],
-      name1: 'John',     // добавьте, если используете в <User :name1="name1" />
+      name1: 'John',
       surn1: 'Smith',
-      price1: 150
+      price1: 150,
+      users: [
+        { id: 1, name: 'Иван', surn: 'Иванов', salary: 100, age: 30 },
+        { id: 2, name: 'Петр', surn: 'Петров', salary: 200, age: 40 },
+        { id: 3, name: 'Сергей', surn: 'Сергеев', salary: 300, age: 50 }
+      ]
     };
   },
-  //65
   methods: {
     firstAction() {
       alert('Вызвана первая функция из родителя!');
     },
     secondAction() {
       alert('Вызвана вторая функция из родителя!');
-    }
-  },
-  methods: {
+    },
     func(name) {
-      console.log(name);
+      console.log('Получено имя от дочернего:', name);
+    },
+    addUser(name, surn) {
+      const id = this.users.length + 1;
+      this.users.push({ id, name, surn, salary: 0, age: 0 }); // можно дописать поля по умолчанию
     }
-  },
-  users: [
-        { id: 1, name: 'name1' },
-        { id: 2, name: 'name2' },
-        { id: 3, name: 'name3' },
-      ]
-}
+  }
+};
 </script>
 
-
-
 <template>
-    <div>
-        <User />
-        
-        <h1>59</h1>
-        <User names="john" surn="smit" />
-        
-        <h1>61</h1>
-        <User :name1="name1" :surn1="surn1" :price1="price1" />
+  <div>
+    <User />
 
-        <h1>63</h1>
-        <Employee
+    <h1>59</h1>
+    <User names="john" surn="smit" />
+
+    <h1>61</h1>
+    <User :name1="name1" :surn1="surn1" :price1="price1" />
+
+    <h1>63</h1>
+    <Employee
       v-for="user in users"
       :key="user.id"
       :name="user.name"
@@ -88,20 +68,28 @@ export default {
     <h1>66</h1>
     <Employee1
       v-for="user in users"
-      :key="user.id"
+      :key="user.id + '-emp1'"
       :name="user.name"
       @sendName="func"
     />
 
     <h1>67</h1>
-      <button @click="$emit('myEvent')">
-    Нажми меня
-  </button>
-  <button @click="$emit('myEvent', 'Привет, родитель!')">
-    Отправить сообщение
-  </button>
-    </div>
+    <!-- Эти кнопки не будут работать без родителя -->
+    <!-- Уберите их или вставьте в отдельный компонент -->
+
+    <h1>70</h1>
+    <h2>Список работников</h2>
+    <ul>
+      <li v-for="user in users" :key="user.id + '-list'">
+        {{ user.id }}. {{ user.name }} {{ user.surn }}
+      </li>
+    </ul>
+
+    <h2>Добавить нового работника</h2>
+    <UserForm @add="addUser" />
+  </div>
 </template>
+
 
 <style scoped>
 p.done {
