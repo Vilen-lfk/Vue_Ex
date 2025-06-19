@@ -2,10 +2,14 @@
 import Employee from './components/Employee.vue'
 import User from './components/User.vue'
 import Child from './components/Child.vue'
+import Employe1 from './components/Employe1.vue'
+
+
 export default {
   components: {
     User,
     Employee,
+    Employe1,
     Child // добавьте сюда Child, а не внутрь data()
   },
   data() {
@@ -35,6 +39,7 @@ export default {
       price1: 150
     };
   },
+  //65
   methods: {
     firstAction() {
       alert('Вызвана первая функция из родителя!');
@@ -42,7 +47,17 @@ export default {
     secondAction() {
       alert('Вызвана вторая функция из родителя!');
     }
-  }
+  },
+  methods: {
+    func(name) {
+      console.log(name);
+    }
+  },
+  users: [
+        { id: 1, name: 'name1' },
+        { id: 2, name: 'name2' },
+        { id: 3, name: 'name3' },
+      ]
 }
 </script>
 
@@ -69,6 +84,22 @@ export default {
 
     <h1>65</h1>
     <Child @clickOne="firstAction" @clickTwo="secondAction" />
+
+    <h1>66</h1>
+    <Employee1
+      v-for="user in users"
+      :key="user.id"
+      :name="user.name"
+      @sendName="func"
+    />
+
+    <h1>67</h1>
+      <button @click="$emit('myEvent')">
+    Нажми меня
+  </button>
+  <button @click="$emit('myEvent', 'Привет, родитель!')">
+    Отправить сообщение
+  </button>
     </div>
 </template>
 
